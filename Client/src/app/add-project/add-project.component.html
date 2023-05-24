@@ -1,0 +1,193 @@
+<!-- <div class="background"> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/country-select-js/2.1.1/js/countrySelect.min.js" integrity="sha512-criuU34pNQDOIx2XSSIhHSvjfQcek130Y9fivItZPVfH7paZDEdtAMtwZxyPq/r2pyr9QpctipDFetLpUdKY4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<div class="background">
+  <!-- <app-navbar></app-navbar> -->
+<div class="card col d-flex justify-content-center mx-auto border-light shadow p-3 mt-5 bg-white rounded" style="width: 1000px; margin-bottom: 50px;">
+    <h2 class="heading" style="text-align: center; font-weight: bold;">Add Project Details</h2>
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="submit()">    
+        <div class="form-group">
+          <label for="clientName">Client Name</label>
+          <input type="text" class="form-control" id="clientName" formControlName="clientName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="projectName">Project Name</label>
+          <input type="text" class="form-control" id="projectName" formControlName="projectName" required>
+        </div>
+
+          <div class="form-group">
+            <label for="projectDescription">Project Description:</label>
+            <textarea type="text" class="form-control" id="projectDescription" formControlName="projectDescription" style="height: 100px;" required></textarea>
+          </div>
+
+          <!-- tagUsed -->
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="tagUsed">Tags</label>
+              <button type="button" class="btn btn-success m-2" (click)="addTags()"><i class="fa-solid fa-plus"></i></button>
+              <div formArrayName="tagUsed">
+                <div *ngFor="let t of tagUsed().controls; let empIndex=index">
+                  <div [formGroupName]="empIndex" style=" margin-top: 5px;" class="d-flex justify-content-between flex-row"
+                  >
+                  <div class="tools col-md-4">
+                    <input type="text" class="form-control" style="width: 25rem;" placeholder="add tags" formControlName="tags" />
+                  </div>
+                  <div class="tagRemoveButton col-md-1">
+                    <button type="button" class="btn btn-danger" (click)="removeTag(empIndex)"><i class="fa-solid fa-trash-can"></i></button> 
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="d-flex row">
+          <!-- Techstack -->
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="techstack">Technology Used</label>
+            <button type="button" class="btn btn-success m-2" (click)="addTechstack()"><i class="fa-solid fa-plus"></i></button>
+            <div formArrayName="techstack">
+              <div *ngFor="let t of techstack().controls; let empIndex=index">
+                <div [formGroupName]="empIndex" style=" margin-top: 5px;" class="d-flex flex-row justify-content-between"
+                >
+                <div class="skill col-md-4">
+                  <input type="text" class="form-control" style="width: 25rem;" placeholder="add technology" formControlName="skill" />
+                </div>
+                <div class="techRemoveButton col-md-1">
+                  <button type="button" class="btn btn-danger" (click)="removeTechstack(empIndex)"><i class="fa-solid fa-trash-can"></i></button> 
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <!-- techstack -->
+
+          <!-- tools -->
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="toolUsed">Tools</label>
+            <button type="button" class="btn btn-success m-2" (click)="addTools()"><i class="fa-solid fa-plus"></i></button>
+            <div formArrayName="toolUsed">
+              <div *ngFor="let t of toolUsed().controls; let empIndex=index">
+                <div [formGroupName]="empIndex" style=" margin-top: 5px;" class="d-flex justify-content-between flex-row"
+                >
+                <div class="tools col-md-4">
+                  <input type="text" class="form-control" style="width: 25rem;" placeholder="add tools" formControlName="tools" />
+                </div>
+                <div class="toolRemoveButton col-md-1">
+                  <button type="button" class="btn btn-danger" (click)="removeTools(empIndex)"><i class="fa-solid fa-trash-can"></i></button> 
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+          <!-- tools -->
+
+
+        <div class="d-flex justify-content-between row">
+        <div class="form-group col-md-4">
+          <label for="category">Category</label>
+          <select class="form-control" id="category" formControlName="category" required>
+            <option value="">Select Category</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Hotels">Hotels</option>
+            <option value="Financial">Financial</option>
+            <option value="Education">Education</option>
+            <option value="Public Sector">Public Sector</option>
+            <option value="Government Sector">Government Sector</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Private Sector">Private Sector</option>
+            <option value="Technology">Technology</option>
+            <option value="Sports">sports</option>
+            <option value="Tour n travels">Tour n travels</option>
+            <option value="Food">Food</option>
+            <option value="Delievery">Delievery</option>
+            <option value="Insurance">Insurance</option>
+            <option value="Media">Media</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="startDate">Start Date</label>
+          <input type="date" class="form-control" id="startDate" formControlName="startDate">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="endDate">End Date</label>
+          <input type="date" class="form-control" id="endDate" formControlName="endDate">
+           </div>
+        </div>
+
+        <div class="d-flex justify-content-between row">
+          <div class="form-group col-md-6">
+            <label for="geography">Geography</label>
+            <input type="text" class="form-control" id="country" formControlName="country" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="budget">Budget</label>
+            <input type="text" class="form-control" id="budget" formControlName="budget" >
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="teamMembers" class="mt-2" >Team Members  
+          <button type="button" class="btn btn-success" (click)="addEmployee()"><i class="fa-solid fa-plus"></i></button></label>
+
+          <div formArrayName="team">
+            <div *ngFor="let employee of employees().controls; let empIndex=index">
+              <div [formGroupName]="empIndex" style=" margin-top: 5px;" class="d-flex justify-content-between row"
+              >
+              <div class="membername col-md-5">
+                <input type="text" class="form-control"  placeholder="name" formControlName="membername" />
+              </div>
+              <div class="memberrole col-md-5">
+                <input type="text" class="form-control"  placeholder="role" formControlName="role" />
+              </div>
+              <div class="memberRemoveButton col-md-1">
+                <button type="button" class="btn btn-danger" (click)="removeEmployee(empIndex)"><i class="fa-solid fa-trash-can"></i></button> 
+              </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="webAddress">Project URL</label>
+            <input type="text" class="form-control" id="webAddress" formControlName="webAddress">
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="documenturl">Document Url</label>
+            <input type="text" class="form-control" id="documenturl" formControlName="documentUrl">
+          </div>
+
+      <div class="text mt-2">
+        <h3 class="headingor" style="text-align: center; font-weight: bold;">OR</h3>
+      </div>
+
+      <div class="text-center">
+        <button type="button" class="btn btn-danger w-25" (click)="onUpload()">Upload Files</button>
+        <input type="file" id="file-input" style="display: none;" accept=".ppt,.pptx,.pdf,.doc,.docx" (change)="onFileSelected($event)">
+      </div>
+      
+      <div class="text-center pt-3 mb-4">
+        <button type="submit" [disabled]="form.invalid" value="Register" class="btn btn-success w-25">Submit</button>
+      </div>
+      </form>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+<!-- </div> -->
+
+  

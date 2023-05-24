@@ -1,0 +1,20 @@
+.background{
+    background-color: #eeeeee;
+}
+.form-control{
+    background-color: #eeeeee;
+    border-color: #eeeeee;
+}
+
+.btn-danger {
+    background-color: #ef6351;
+    border-color: #ef6351;
+  }
+  
+  label{
+    font-weight: bold;
+  }
+
+.form-group{
+  margin-top: 1rem;
+}

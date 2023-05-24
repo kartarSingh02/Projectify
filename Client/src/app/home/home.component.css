@@ -1,0 +1,37 @@
+.Background{
+    background-color: #eeeeee;
+    height: 100%;
+    width: 100%;
+}
+
+.img-bg {
+    /* width: 100%; */
+    width: auto;
+    height: 500px;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    background-image: url(https://i.ibb.co/yRtgzzT/istockphoto-1312226998-170667a-transformed.jpg);
+    background-size:cover;
+    background-position: center;
+    margin-top: -0.47rem;
+  }
+
+.icon{
+    color: black;
+}
+.icon:hover{
+    color: #EF6351;
+}
+a{
+    text-decoration: none;
+}
+
+
+.text-heading{
+    color: #EF6351;
+}
+
+.paragraph{
+    text-align: left;
+    font-size: 20px;
+    color:dimgrey;
+}
